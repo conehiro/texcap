@@ -1,2 +1,4 @@
 # texcap
- Capture text
+ Capture text on python.
+ 
+ powered by OpenCV
