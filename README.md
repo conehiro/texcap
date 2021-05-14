@@ -1,0 +1,2 @@
+# texcap
+ Capture text
