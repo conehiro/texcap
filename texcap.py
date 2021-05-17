@@ -26,4 +26,26 @@ def dilate(ary, N, interations):
     dilated_image = cv2.convertScaleAbs(dilated_image)
     
     return dilated_image
-    
+
+
+    """Bounding box / the number of set pixels for each contour"""
+    def props_contours(contours, ary):
+        c_info = []
+        
+        for c in countours:
+            x, y, w, h = cv2.boundingRect(c)
+            c_im = np.zeros(ary, shape)
+            cv2.drawcontours(c_im, [c], 0, 255, -1)
+            c_info.append
+            (
+                {
+                    'x1' : x,
+                    'y1' : y,
+                    'x2' : x + w - 1,
+                    'y2' : y + h - 1,
+                    'sum' : np.sum(ary * (c_im > 0)) / 255
+
+                }
+            )
+
+        return c_info
