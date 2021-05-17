@@ -44,7 +44,6 @@ def dilate(ary, N, interations):
                     'x2' : x + w - 1,
                     'y2' : y + h - 1,
                     'sum' : np.sum(ary * (c_im > 0)) / 255
-
                 }
             )
 
