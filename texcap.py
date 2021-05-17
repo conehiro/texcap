@@ -28,7 +28,7 @@ def dilate(ary, N, interations):
     return dilated_image
 
 
-    """Bounding box / the number of set pixels for each contour"""
+    """Calculate bounding box / number of set pixels for each contour"""
     def props_contours(contours, ary):
         c_info = []
         
