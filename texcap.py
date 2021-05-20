@@ -20,7 +20,7 @@ def dilate(ary, N, interations):
     dilated_image = cv2.dilate(ary / 255, kernel, interations = interations)
 
     kernel = np.zeros((N,N), dtype = np.uint8)
-    kernel[:,(N - 1) / 2] = 1
+    kernel[:, (N - 1) / 2] = 1
 
     dilated_image = cv2.dilate(dilated_image, kernel, interations = interations)
     dilated_image = cv2.convertScaleAbs(dilated_image)
