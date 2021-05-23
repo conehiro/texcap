@@ -55,3 +55,5 @@ def dilate(ary, N, interations):
             x12, y12, x22, y22 = crop2
 
             return min(x11, x12), min(y11, y12), max(x21, x22), max(y21, y22)
+
+            
