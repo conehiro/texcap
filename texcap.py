@@ -50,10 +50,20 @@ def dilate(ary, N, interations):
         return c_info
 
 
-        def union_crops():
+        def union_crops(crop1, crop2):
             x11, y11, x21, y21 = crop1
             x12, y12, x22, y22 = crop2
 
             return min(x11, x12), min(y11, y12), max(x21, x22), max(y21, y22)
 
             
+        def intersect_crops(crop1, crop2):
+            x11, y11, x21, y21 = crop1
+            x12, y12, x22, y22 = crop2
+
+            return min(x11, x12), min(y11, y12), max(x21, x22), max(y21, y22)
+
+        def crop_area(crop):
+            x1, y1, x2, y2 = crop
+
+            return max(0, x2 - x1) * max(0, y2 - y1)
