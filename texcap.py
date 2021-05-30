@@ -67,3 +67,15 @@ def crop_area(crop):
     x1, y1, x2, y2 = crop
 
     return max(0, x2 - x1) * max(0, y2 - y1)
+
+def find_border_components(contours, ary):
+    borders = []
+    area = ary.shape[0] * ary.shape[1]
+
+    for i, c in enumerate(contours):
+        x, y, w, h = cv2.boundingRect(c)
+
+        if w * h > 0.5 * area:
+            borders.append((i, x, y, x + w - 1, y + h -1))
+
+    return borders
