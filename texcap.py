@@ -29,41 +29,41 @@ def dilate(ary, N, interations):
 
 
     """Calculate bounding box / number of set pixels for each contour"""
-    def props_contours(contours, ary):
-        c_info = []
+def props_contours(contours, ary):
+    c_info = []
         
-        for c in countours:
-            x, y, w, h = cv2.boundingRect(c)
-            c_im = np.zeros(ary, shape)
-            cv2.drawcontours(c_im, [c], 0, 255, -1)
-            c_info.append
-            (
-                {
-                    'x1' : x,
-                    'y1' : y,
-                    'x2' : x + w - 1,
-                    'y2' : y + h - 1,
-                    'sum' : np.sum(ary * (c_im > 0)) / 255
-                }
-            )
+    for c in countours:
+        x, y, w, h = cv2.boundingRect(c)
+        c_im = np.zeros(ary, shape)
+        cv2.drawcontours(c_im, [c], 0, 255, -1)
+        c_info.append
+        (
+            {
+                'x1' : x,
+                'y1' : y,
+                'x2' : x + w - 1,
+                'y2' : y + h - 1,
+                'sum' : np.sum(ary * (c_im > 0)) / 255
+            }
+        )
 
-        return c_info
+    return c_info
 
 
-        def union_crops(crop1, crop2):
-            x11, y11, x21, y21 = crop1
-            x12, y12, x22, y22 = crop2
+def union_crops(crop1, crop2):
+    x11, y11, x21, y21 = crop1
+    x12, y12, x22, y22 = crop2
 
-            return min(x11, x12), min(y11, y12), max(x21, x22), max(y21, y22)
+    return min(x11, x12), min(y11, y12), max(x21, x22), max(y21, y22)
 
             
-        def intersect_crops(crop1, crop2):
-            x11, y11, x21, y21 = crop1
-            x12, y12, x22, y22 = crop2
+def intersect_crops(crop1, crop2):
+    x11, y11, x21, y21 = crop1
+    x12, y12, x22, y22 = crop2
 
-            return min(x11, x12), min(y11, y12), max(x21, x22), max(y21, y22)
+    return min(x11, x12), min(y11, y12), max(x21, x22), max(y21, y22)
 
-        def crop_area(crop):
-            x1, y1, x2, y2 = crop
+def crop_area(crop):
+    x1, y1, x2, y2 = crop
 
-            return max(0, x2 - x1) * max(0, y2 - y1)
+    return max(0, x2 - x1) * max(0, y2 - y1)
