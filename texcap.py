@@ -50,6 +50,7 @@ def props_contours(contours, ary):
     return c_info
 
 
+"""union crops"""
 def union_crops(crop1, crop2):
     x11, y11, x21, y21 = crop1
     x12, y12, x22, y22 = crop2
