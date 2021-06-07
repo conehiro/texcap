@@ -28,7 +28,7 @@ def dilate(ary, N, interations):
     return dilated_image
 
 
-    """Calculate bounding box / number of set pixels for each contour"""
+"""Calculate bounding box / number of set pixels for each contour"""
 def props_contours(contours, ary):
     c_info = []
         
@@ -68,6 +68,7 @@ def crop_area(crop):
 
     return max(0, x2 - x1) * max(0, y2 - y1)
 
+"""find components"""
 def find_border_components(contours, ary):
     borders = []
     area = ary.shape[0] * ary.shape[1]
