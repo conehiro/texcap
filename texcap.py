@@ -81,3 +81,53 @@ def find_border_components(contours, ary):
             borders.append((i, x, y, x + w - 1, y + h -1))
 
     return borders
+
+
+def find_optimal_components_subset(contours, edges):
+    c_info = props_for_contours(contours, edges)
+    c_info.sort(key = lambda x: -x['sum'])
+    total = np.sum(edges) / 255
+    area - edges.shape[0] * edges.shape[1]
+
+    c - c_info[0]
+    del c_info[0] 
+    this_crop = c['x1'], c['y1'], c['x2'], c['y2']
+    crop = this_crop
+    covered_sum = c['sum']
+
+    while covered_sum < total:
+        changed = False
+    recall = 1.0 * covered_sum / total
+    prec = 1 - 1.0 * crop_area(crop) / area
+    f1 = 2 * (prec * recall / (prec + recall))
+
+    for i, c in enumerate(c_info):
+        this_crop = c['x1'], c['y1'], c['x2'], c['y2']
+        new_crop = union_crops(crop, this_crop)
+        new_sum = covered_sum + c['sum']
+        new_recall = 1.0 * new_sum / total
+        new_prec = I - 1.0 * crop_area(new_crop) / area
+        new_f1 = 2 * new_prec * new_recall / (new_prec + new_recall)
+    
+    # Add this crop if it reproves ft score,
+    #'_or_' adds 259 of the remining pixels for 5% crop expansion.
+    
+    remaining_frac = c['sum'] / (total - covered_sum)
+    new_area_frac = 1.0 * crop_area(new_crop) / crop_area(crop) - 1
+
+    if new_f1 > f1 or (remaining_frac > 0.25 and new_area_frac < 0.15):
+        Print('%d %s -> %s / %s (%s), %s -> %s / %s (%s), %s -> %S' % (
+                i, covered_sum, new_sum, total, remaining_frac,
+                crop_area(crop), crop_area(new_crop), area, new_area_frac,
+                f1, new_f1))
+
+        crop = new_crop
+        covered_sum = new_sum
+        
+        del c_info[i]
+
+        changed = True
+        break
+
+    if not changed:
+        break
