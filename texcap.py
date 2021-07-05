@@ -116,7 +116,7 @@ def find_optimal_components_subset(contours, edges):
     new_area_frac = 1.0 * crop_area(new_crop) / crop_area(crop) - 1
 
     if new_f1 > f1 or (remaining_frac > 0.25 and new_area_frac < 0.15):
-        Print('%d %s -> %s / %s (%s), %s -> %s / %s (%s), %s -> %S' % (
+        print('%d %s -> %s / %s (%s), %s -> %s / %s (%s), %s -> %S' % (
                 i, covered_sum, new_sum, total, remaining_frac,
                 crop_area(crop), crop_area(new_crop), area, new_area_frac,
                 f1, new_f1))
